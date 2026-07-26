@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<<head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRM Call Center - Login</title>
@@ -8,17 +8,32 @@
 </head>
 <body>
 
-    <h1>CRM Call Center</h1>
+<h1>CRM Call Center</h1>
 
-    <form action="/dashboard" method="GET">
-        <label>Usuario</label><br>
-        <input type="text" name="usuario" placeholder="Ingrese su usuario">
+<form onsubmit="return validarLogin()">
+    <label>Usuario</label><br>
+    <input type="text" id="usuario" placeholder="Ingrese su usuario"><br><br>
 
-        <label>Contraseña</label><br>
-        <input type="password" name="contrasena" placeholder="Ingrese su contraseña">
+    <label>Contraseña</label><br>
+    <input type="password" id="contrasena" placeholder="Ingrese su contraseña"><br><br>
 
-        <button type="submit">Iniciar sesión</button>
-    </form>
+    <button type="submit">Iniciar sesión</button>
+</form>
+
+<script>
+function validarLogin() {
+    const usuario = document.getElementById("usuario").value;
+    const contrasena = document.getElementById("contrasena").value;
+
+    if (usuario === "admin" && contrasena === "123456") {
+        window.location.href = "/dashboard";
+        return false;
+    } else {
+        alert("Usuario o contraseña incorrectos");
+        return false;
+    }
+}
+</script>
 
 </body>
 </html>
