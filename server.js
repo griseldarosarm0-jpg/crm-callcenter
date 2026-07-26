@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 app.use(express.static("public"));
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/login.html");
@@ -19,9 +19,7 @@ app.get("/clientes", (req, res) => {
 app.get("/agentes", (req, res) => {
     res.sendFile(__dirname + "/views/agentes.html");
 });
-app.listen(PORT, () => {
-    console.log(`Servidor iniciado en http://localhost:${PORT}`);
-});
+
 app.get("/campanas", (req, res) => {
     res.sendFile(__dirname + "/views/campanas.html");
 });
@@ -30,4 +28,9 @@ app.get("/reportes", (req, res) => {
 });
 app.get("/configuracion", (req, res) => {
     res.sendFile(__dirname + "/views/configuracion.html");
+});
+
+
+app.listen(PORT, () => {
+    console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
